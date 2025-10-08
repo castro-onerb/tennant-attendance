@@ -10,6 +10,11 @@ import { DataPatient } from "./clinico-geral/data-patient";
 function Home() {
   const { open } = useGlobalModal();
 
+  const handleCheckHealth = async () => {
+    const response = await fetch('http://localhost:5117/Integration/healthcheck');
+    console.log(response);
+  }
+
   const handleClinicoGeral = () => {
     open(
       <ClinicoGeralModal />,
@@ -73,6 +78,7 @@ function Home() {
           </div>
 
         </div>
+        <Button onClick={handleCheckHealth}>Check API</Button>
       </div>
     </div>
   )

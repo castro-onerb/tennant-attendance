@@ -11,7 +11,8 @@ function Home() {
   const { open } = useGlobalModal();
 
   const handleCheckHealth = async () => {
-    const response = await fetch('http://localhost:5117/Integration/healthcheck');
+    const result = await fetch('http://localhost:5117/Integration/healthcheck');
+    const response = await result.json();
     console.log(response);
   }
 

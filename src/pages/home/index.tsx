@@ -5,10 +5,17 @@ import { ClinicoGeralModal } from "./clinico-geral/clinico-geral.modal";
 import DoctorMaleHero from '../../assets/doctor-male-hero.png';
 import MomSonHero from '../../assets/mom-son-hero.png';
 import { Headline } from "@/components/Title";
-import { DataPatient } from "./clinico-geral/data-patient";
 
 function Home() {
   const { open } = useGlobalModal();
+
+  const handleTriage = async () => {
+    const response = await fetch('http://localhost:5117/IntegracaoDrAoVivo/capture', {
+      method: 'POST'
+    });
+    const result = await response.json();
+    console.log(result);
+  }
 
   const handleClinicoGeral = () => {
     open(
@@ -68,7 +75,7 @@ function Home() {
             <div className='relative flex-1 rounded-3xl flex items-end justify-center bg-primary-500'>
               <Button className='absolute top-4 bg-white hover:bg-gray-50 text-primary-500 hover:text-primary-600 transition'>Pediatria apenas para recém-nascidos até criança de 14 anos</Button>
               <img src={MomSonHero} className='max-w-full max-h-full h-[90%]' />
-              <Button className='absolute bottom-4 bg-white hover:bg-gray-50 text-primary-500 hover:text-primary-600 transition'>Seja atendido agora</Button>
+              <Button onClick={handleTriage} className='absolute bottom-4 bg-white hover:bg-gray-50 text-primary-500 hover:text-primary-600 transition'>Seja atendido agora</Button>
             </div>
           </div>
 

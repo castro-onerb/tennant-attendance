@@ -10,7 +10,7 @@ function Home() {
   const { open } = useGlobalModal();
 
   const handleTriage = async () => {
-    const response = await fetch('http://localhost:5117/IntegracaoDrAoVivo/capture', {
+    const response = await fetch('http://localhost:5117/IntegrationDrAoVivo/capture', {
       method: 'POST'
     });
     const result = await response.json();

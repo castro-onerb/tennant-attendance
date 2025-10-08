@@ -11,7 +11,13 @@ function Home() {
 
   const handleTriage = async () => {
     const response = await fetch('http://localhost:5117/IntegrationDrAoVivo/capture', {
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        logo: 'logo'
+      }),
     });
     const result = await response.json();
     console.log(result);
